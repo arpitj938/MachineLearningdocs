@@ -60,6 +60,5 @@ from sklearn.tree import DecisionTreeRegressor
 regressor = DecisionTreeRegressor(random_state = 0)
 regressor.fit(X, y)
 y_pred = regressor.predict(X_test)
-
 ###############################################################################
 

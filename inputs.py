@@ -10,7 +10,7 @@ Template to get the improve the input
 (DataPreprocessing)
 """
 
-#we usually input csv in dataframes using pandas library 
+
 
 
 ###############################################################################
