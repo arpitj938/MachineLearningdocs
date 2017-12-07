@@ -52,7 +52,6 @@ array([[1, 0, 0, 0],
 
 
 a = np.random.rand(4) 
-
 # array([ 0.57944059,  0.4826708 ,  0.66348841,  0.37141847])
 
 
@@ -63,14 +62,17 @@ np.sum(x)
 x.sum(axis=0)
 x.max()
 x.min()
-
-x.argmin()# index of minimum element
+#index of minimum element
+x.argmin()
+#index of maximum element
 x.argmax()
 
 a = np.array([[1, 2, 3], [4, 5, 6]])
-a.ravel() #Return a contiguous flattened array. A 1-D array, containing the elements of the input, is returned. A copy is made only if needed.
+#Return a contiguous flattened array. A 1-D array, containing the elements of the input, is returned. A copy is made only if needed.
+a.ravel() 
 
-a.T #Transpose 
+#Transpose Used quite extensively 
+a.T  
 
 b = b.reshape((2, 3))
 
