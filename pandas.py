@@ -25,12 +25,15 @@ y = dataset.iloc[:, 3].values
 dataset.shape   
 
 #if you want to see last few rows then use tail command (default last 5 rows will print)
-dataset.tail()
+dataset.tail() 
 
 #slicing
 dataset[2:5]
 
+dataset.info()
+
 dataset.columns
+dataset.index
 
 #priting particular column data 
 dataset.column
@@ -47,3 +50,46 @@ dataset['column'].describe()
 dataset[dataset.column == dataset.column.max()] 
 
 
+##################################################################################################
+#Pandas series 
+
+data = dataset['coloumn']
+type(data) # pandas.core.series.Series
+newNumpyData = data.values #converts Series into Numpy array
+
+users['fees'] = 0 # Broadcasts to entire column
+
+
+
+
+
+##################################################################################################
+#Building DataFrames
+
+#methord 1
+data = {'weekday': ['Sun', 'Sun', 'Mon', 'Mon'],
+'city': ['Austin', 'Dallas', 'Austin', 'Dallas',
+'visitors': [139, 237, 326, 456],
+'signups': [7, 12, 3, 5]
+}
+
+users = pd.DataFrame(data)
+
+#methord 2
+cities = ['Austin', 'Dallas', 'Austin', 'Dallas']
+signups = [7, 12, 3, 5]
+weekdays = ['Sun', 'Sun', 'Mon', 'Mon']
+visitors = [139, 237, 326, 456]
+list_labels = ['city', 'signups', 'visitors', 'weekday']
+list_cols = [cities, signups, visitors, weekdays]
+zipped = list(zip(list_labels, list_cols))
+data = dict(zipped)
+users = pd.DataFrame(data)
+
+##################################################################################################
+#writing DataFrames
+
+data.to_csv('output.csv')
+
+##################################################################################################
+#Plotting DataFrames
