@@ -8,6 +8,7 @@ Created on Wed Dec 18 17:27:56 2017
 Basics functions for handeling pandas
 
 (DataPreprocessing)
+
 """
 
 #we usually input csv in dataframes using pandas library 
@@ -45,6 +46,11 @@ dataset[['column1', 'column2']] #getting two or more column at once
 dataset['column'].max()
 dataset['column'].min() 
 dataset['column'].describe()
+dataset['column'].mean()
+dataset['column'].std()
+dataset['column'].median()
+dataset['column'].quantile(q) # q ~ 0 / 1 
+dataset['column'].unique()
 
 # select rows which has maximum value
 dataset[dataset.column == dataset.column.max()] 
@@ -60,22 +66,20 @@ newNumpyData = data.values #converts Series into Numpy array
 users['fees'] = 0 # Broadcasts to entire column
 
 
-
-
-
 ##################################################################################################
 #Building DataFrames
 
-#methord 1
+#method 1
 data = {'weekday': ['Sun', 'Sun', 'Mon', 'Mon'],
-'city': ['Austin', 'Dallas', 'Austin', 'Dallas',
+'city': ['Austin', 'Dallas', 'Austin', 'Dallas'],
 'visitors': [139, 237, 326, 456],
-'signups': [7, 12, 3, 5]
+'signups': [7, 12, 3, 5] 
 }
+
 
 users = pd.DataFrame(data)
 
-#methord 2
+#method 2
 cities = ['Austin', 'Dallas', 'Austin', 'Dallas']
 signups = [7, 12, 3, 5]
 weekdays = ['Sun', 'Sun', 'Mon', 'Mon']
@@ -90,6 +94,27 @@ users = pd.DataFrame(data)
 #writing DataFrames
 
 data.to_csv('output.csv')
-
 ##################################################################################################
 #Plotting DataFrames
+
+data.plot(x='xaxis',y='yaxis',kind='scatter',bins=30, range=(4,8), normed=True) #kind='box' kind='hist' 
+plt.show()
+
+##################################################################################################
+#Time Series 
+
+"""ISO 8601 format :: yyyy-mm-dd hh:mm:ss """
+
+#parse dates 
+data = pd.read_csv('data.csv', parse_dates=True, index_col= 'Date')
+
+#strings to datetime
+
+
+#Selecting single datetime
+data.loc['2015-02-19 11:00:00']
+#Selecting whole day
+data.loc['2015-2-5']
+#Slicing using dates/times
+data.loc['2015-2-16':'2015-2-20']
+
