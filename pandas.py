@@ -118,3 +118,11 @@ data.loc['2015-2-5']
 #Slicing using dates/times
 data.loc['2015-2-16':'2015-2-20']
 
+#Filling missing values 
+data.reindex(evening_2_11, method='ffill') #method='bfill'
+
+daily_mean = data.resample('D').mean()
+
+
+
+##################################################################################################
