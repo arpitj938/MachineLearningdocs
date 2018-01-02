@@ -101,3 +101,26 @@ plt.plot(x_test,y_pred_plot,'r')
 plt.plot(x_data,y_label,'*')    
 
 ################################################################################################
+""" Loading and Saving"""
+
+#saving a model
+with tf.Session() as sess:
+    sess.run(init)
+    epochs = 100
+    for i in range(epochs):
+        sess.run(train)
+    # Fetch Back Results
+    final_slope , final_intercept = sess.run([m,b])
+    # ONCE YOU ARE DONE
+    # GO AHEAD AND SAVE IT!
+    # Make sure to provide a directory for it to make or go to. May get errors otherwise
+    #saver.save(sess,'models/my_first_model.ckpt')
+    saver.save(sess,'new_models/my_second_model.ckpt')
+
+
+#Loading a Model
+with tf.Session() as sess:
+    # Restore the model
+    saver.restore(sess,'new_models/my_second_model.ckpt')
+    # Fetch Back Results
+    restored_slope , restored_intercept = sess.run([m,b])
