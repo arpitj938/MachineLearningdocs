@@ -1,4 +1,6 @@
 import pandas as pd
+
+
 diabetes = pd.read_csv('pima-indians-diabetes.csv')
 diabetes.head()
 
@@ -10,11 +12,14 @@ cols_to_norm = ['Number_pregnant', 'Glucose_concentration', 'Blood_pressure', 'T
 diabetes[cols_to_norm] = diabetes[cols_to_norm].apply(lambda x: (x - x.min()) / (x.max() - x.min()))
 diabetes.head()
 
+###############################################################################################################################
 
 """ 
 Tf begins 
 
 """
+###############################################################################################################################
+
 import tensorflow as tf
 
 num_preg = tf.feature_column.numeric_column('Number_pregnant')
@@ -53,6 +58,7 @@ input_func = tf.estimator.inputs.pandas_input_fn(x=X_train,y=y_train,batch_size=
 model = tf.estimator.LinearClassifier(feature_columns=feat_cols,n_classes=2)
 model.train(input_fn=input_func,steps=1000)
 
+###############################################################################################################################
 #Evaluation
 eval_input_func = tf.estimator.inputs.pandas_input_fn(
       x=X_test,
@@ -63,6 +69,7 @@ eval_input_func = tf.estimator.inputs.pandas_input_fn(
 
 results = model.evaluate(eval_input_func)
 results
+###############################################################################################################################
 
 #Predictions
 pred_input_func = tf.estimator.inputs.pandas_input_fn(
@@ -70,5 +77,6 @@ pred_input_func = tf.estimator.inputs.pandas_input_fn(
       batch_size=10,
       num_epochs=1,
       shuffle=False)
+###############################################################################################################################
 
 

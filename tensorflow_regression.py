@@ -3,6 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 %matplotlib inline
 
+
+###############################################################################################################################
 # 1 Million Points
 x_data = np.linspace(0.0,10.0,1000000)
 
@@ -17,7 +19,13 @@ my_data = pd.concat([pd.DataFrame(data=x_data,columns=['X Data']),pd.DataFrame(d
 my_data.head()
 
 my_data.sample(n=250).plot(kind='scatter',x='X Data',y='Y')
+###############################################################################################################################
+""" 
 
+Tf begins 
+
+"""
+###############################################################################################################################
 
 
 import tensorflow as tf
@@ -54,10 +62,12 @@ y_hat = x_data * model_m + model_b
 my_data.sample(n=250).plot(kind='scatter',x='X Data',y='Y')
 plt.plot(x_data,y_hat,'r')
 
+###############################################################################################################################
 
 """
 tf.estimator API
 """
+###############################################################################################################################
 
 feat_cols = [tf.feature_column.numeric_column('x',shape=[1])]
 estimator = tf.estimator.LinearRegressor(feature_columns=feat_cols)
@@ -83,6 +93,9 @@ for x in estimator.predict(input_fn=input_fn_predict):
 
 print(predictions)
 
+###############################################################################################################################
+#plot
 my_data.sample(n=250).plot(kind='scatter',x='X Data',y='Y')
 plt.plot(np.linspace(0,10,10),predictions,'r')
 
+###############################################################################################################################

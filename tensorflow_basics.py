@@ -18,6 +18,7 @@ result #b'HelloWorld'
 ################################################################################################
 #Operations
 
+
 const = tf.constant(10)
 fill_mat = tf.fill((4,4),10)
 myzeros = tf.zeros((4,4))
@@ -101,6 +102,7 @@ plt.plot(x_test,y_pred_plot,'r')
 plt.plot(x_data,y_label,'*')    
 
 ################################################################################################
+
 """ Loading and Saving"""
 
 #saving a model
